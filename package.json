@@ -1,0 +1,19 @@
+{
+  "name": "node-express-mongo",
+  "version": "1.0.0",
+  "description": "Studying stack node-express-mongodb",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "express-load": "^1.1.15",
+    "jsonwebtoken": "^7.4.0",
+    "mongoose": "*",
+    "request": "^2.74.0"
+  },
+  "author": "Renan Neves",
+  "license": "ISC"
+}
