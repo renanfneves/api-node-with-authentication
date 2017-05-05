@@ -8,20 +8,24 @@ module.exports = function(app){
     	usuario.login = req.body.login;
         usuario.senha = req.body.senha;
 
-        usuario.save(function(error) {
-            if(error)
-                next(error);
+        usuario.save(function(err) {
+            if(err) {
+                res.status(500).send({ message: JSON.stringify(err)});
+                return;
+            }
  
             res.status(201).send();
         });
 
 	});
 
-	app.get('/usuarios',function(req, res) {
- 
+	app.get('/usuarios', function(req, res) {
+        
         Usuario.find(function(err, usuarios) {
-            if(err)
-                res.send(err);
+            if(err) {
+                    res.status(500).send({ message: JSON.stringify(err)});
+                    return;
+                }
 
             if(usuarios.length == 0){
             	res.status(204).send();
@@ -37,8 +41,10 @@ module.exports = function(app){
  		var id = req.params.usuario_id;
         
         Usuario.findById(id, function(error, usuario) {
-            if(error)
-                next(error);
+            if(error) {
+                res.status(500).send({ message: JSON.stringify(err)});
+                return;
+            }
 
             if(!usuario){
             	res.status(204).send();
@@ -52,8 +58,10 @@ module.exports = function(app){
      app.put('/usuario/:usuario_id', function(req, res, next) {
  
         Usuario.findById(req.params.usuario_id, function(error, usuario) {
-            if(error)
-                next(error);
+            if(error) {
+                res.status(500).send({ message: JSON.stringify(err)});
+                return;
+            }
  
             usuario.nome = req.body.nome;
             usuario.login = req.body.login;
@@ -73,8 +81,10 @@ module.exports = function(app){
         Usuario.remove({
         _id: req.params.usuario_id
         }, function(error) {
-            if(error)
-                next(error);
+            if(error) {
+                res.status(500).send({ message: JSON.stringify(err)});
+                return;
+            }
  
             res.status(200).send();
         });
