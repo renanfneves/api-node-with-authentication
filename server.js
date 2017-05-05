@@ -9,6 +9,6 @@ app.get('/', function(req, res, next){
 });
 
 app.listen(3000, function(){
-	console.log('Api rodando na porta 51001');
+	console.log('Api rodando na porta 3000');
 
 });
